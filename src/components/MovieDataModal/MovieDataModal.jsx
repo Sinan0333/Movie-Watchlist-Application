@@ -84,7 +84,7 @@ function MovieDataModal({ showModal,setShowModal,data }) {
           dispatch(editMovie({id,title,description,releaseYear,genre,image:url,index:data.index}));
         }else{
           const uniqueId = "id" + Date.now();
-          dispatch(addMovie({ id:uniqueId, title, description, releaseYear, genre, image: url }));
+          dispatch(addMovie({ id:uniqueId, title, description, releaseYear, genre, image: url,status:false }));
         }
         setShowModal(!showModal);
       } catch (error) {

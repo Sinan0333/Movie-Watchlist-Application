@@ -17,10 +17,13 @@ const moviesSlice = createSlice({
         deleteMovie: (state,action)=>{
             const index = action.payload
             state.splice(index,1)
+        },
+        updateStatus: (state,action)=>{
+            state[action.payload].status = !state[action.payload].status
         }
     }
 })
 
 
-export const{addMovie,editMovie,deleteMovie} = moviesSlice.actions
+export const{addMovie,editMovie,deleteMovie,updateStatus} = moviesSlice.actions
 export default moviesSlice.reducer

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './List.css'
 import { useDispatch, useSelector } from 'react-redux'
 import MovieDataModal from '../MovieDataModal/MovieDataModal'
-import { deleteMovie } from '../../store/slice/movieSlice'
+import { deleteMovie, updateStatus } from '../../store/slice/movieSlice'
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal'
 
 function List() {
@@ -40,7 +40,7 @@ function List() {
                   <img src="/assets/icons/edit.png" alt="delete" onClick={()=>{setData({...movie},index) , setConfirmationModalVisible(true)}}/>
                 </div>
                 <div className='card-button'>
-                  
+                  <img src={movie.status ? "/assets/icons/eye.png" : "/assets/icons/blind.png"} alt="Add review" onClick={()=>dispatch(updateStatus(index))}/>
                 </div>
               </div>
              

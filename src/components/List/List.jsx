@@ -1,26 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './List.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import MovieDataModal from '../MovieDataModal/MovieDataModal'
+import { deleteMovie } from '../../store/slice/movieSlice'
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal'
 
 function List() {
   const data = useSelector((state)=> state.movies)
+  const dispatch = useDispatch()
+  const [movieData,setMovieData] = useState("") 
+  const [showModal, setShowModal] = useState(false);
+  const [ConfirmationModalVisible, setConfirmationModalVisible] = useState(false);
+  const [index,setIndex] = useState("")
+
+
+  const setData = (movie,index)=>{
+    movie.index = index
+    setMovieData(movie)
+  }
+
+  const handleDelete = (index) =>{
+    dispatch(deleteMovie(index))
+  }
 
   return (
 
     <div className='list'>
+      <MovieDataModal showModal={showModal} setShowModal={setShowModal} data={movieData}/>
+      <ConfirmationModal showModal={ConfirmationModalVisible} setShowModal={setConfirmationModalVisible} message={`Are you sure you want to delete ${movieData.title}`} onConfirm={() => handleDelete(index)}/>
       {
-        data.map((movie)=>{
+        data.map((movie,index)=>{
           return (
             <div key={movie.id} className='card'>
               <div className='card-buttons-container'>
-                <div className='card-button'>
+                <div className='card-button' onClick={()=>{setData({...movie},index) , setShowModal(true)}}>
                   <img src="/assets/icons/edit.png" alt="Edit" />
                 </div>
                 <div className='card-button'>
-                  <img src="/assets/icons/edit.png" alt="delete" />
+                  <img src="/assets/icons/edit.png" alt="delete" onClick={()=>{setData({...movie},index) , setConfirmationModalVisible(true)}}/>
                 </div>
                 <div className='card-button'>
-                  <img src="/assets/icons/edit.png" alt="Add review" />
+                  
                 </div>
               </div>
              

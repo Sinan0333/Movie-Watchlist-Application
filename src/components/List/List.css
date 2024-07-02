@@ -1,0 +1,61 @@
+  .list{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 10px; 
+    padding: 10px;
+    
+}
+
+.card {
+    background-color: black;
+    color: white;
+    height: 550px;
+    width: 250px;
+    padding: 10px;
+    transition: transform 100ms;
+}
+.card:hover{
+    transform: scale(1.09);
+}
+.card-img{
+    max-height: 350PX;
+    margin-right: 10px;
+}
+
+.movie-title{
+    padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.movie-details{
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.movie-description{
+    padding-top: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.card-buttons-container{
+    position: absolute;
+    display: flex;
+}
+
+.card-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    background-color: wheat;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+}
+
+.card-button img{
+    width: 20px;
+}

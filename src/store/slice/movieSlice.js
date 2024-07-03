@@ -6,9 +6,6 @@ const moviesSlice = createSlice({
     name:"movies",
     initialState,
     reducers:{
-        setInitialData: (state,action)=>{
-            state = action.payload
-        },
         addMovie: (state,action)=>{
             state.push(action.payload) 
         },
@@ -27,6 +24,7 @@ const moviesSlice = createSlice({
         addReview: (state,action)=>{
             const index = action.payload.index
             delete action.payload.index
+            state[index].reviews.push(action.payload) 
             const rating = state[index].reviews.reduce((acc,curr)=>acc+curr.rating,0)/state[index].reviews.length
             state[index].rating = rating
         },
@@ -34,5 +32,5 @@ const moviesSlice = createSlice({
 })
 
 
-export const{setInitialData,addMovie,editMovie,deleteMovie,updateStatus,addReview} = moviesSlice.actions
+export const{addMovie,editMovie,deleteMovie,updateStatus,addReview} = moviesSlice.actions
 export default moviesSlice.reducer

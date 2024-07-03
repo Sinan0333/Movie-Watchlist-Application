@@ -8,6 +8,7 @@ import ReviewModal from '../ReviewModal/ReviewModal'
 
 function List() {
   const data = useSelector((state)=> state.movies)
+  console.log(data)
   const dispatch = useDispatch()
   const [movieData,setMovieData] = useState("") 
   const [showModal, setShowModal] = useState(false);

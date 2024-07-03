@@ -8,7 +8,7 @@ function ReviewModal({showModal,setShowModal,data}) {
     const [rating,setRating] = useState(0)
     const [review, setReview] = useState("")
 
-    const handleSubmit = async()=>{
+    const handleSubmit = ()=>{
         if(review.trim() === ""){
             return notifyError("Review cannot be empty")
         }else if(review.length > 200){
@@ -18,8 +18,7 @@ function ReviewModal({showModal,setShowModal,data}) {
         }
 
         const id = "id" + Date.now();
-        data.review.push({id,rating:rating,review:review})
-        dispatch(addReview(data))
+        dispatch(addReview({id,rating:rating,review:review,index:data.index}))
         setReview("")
         setRating(0)
         setShowModal(false)

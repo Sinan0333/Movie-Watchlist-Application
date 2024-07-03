@@ -19,8 +19,9 @@ function List() {
     setMovieData(movie)
   }
 
-  const handleDelete = (index) =>{
+  const handleDelete = async(index) =>{
     dispatch(deleteMovie(index))
+    await axios.delete(`http://localhost:3001/movies/${movieData.id}`);
   }
 
   return (
@@ -39,13 +40,13 @@ function List() {
                     <img src="/assets/icons/edit.png" alt="Edit" />
                   </div>
                   <div className='card-button'>
-                    <img src="/assets/icons/edit.png" alt="delete" onClick={()=>{setData({...movie},index) , setConfirmationModalVisible(true)}}/>
+                    <img src="/assets/icons/delete.png" alt="delete" onClick={()=>{setData({...movie},index) , setConfirmationModalVisible(true)}}/>
                   </div>
                   <div className='card-button'>
                     <img src={movie.status ? "/assets/icons/eye.png" : "/assets/icons/blind.png"} alt="Add review" onClick={()=>dispatch(updateStatus(index))}/>
                   </div>
                   <div className='card-button'>
-                    <img src="/assets/icons/edit.png" alt="delete" onClick={()=>{setData({...movie},index) , setShowReviewModal(true)}}/>
+                    <img src="/assets/icons/review.png" alt="delete" onClick={()=>{setData({...movie},index) , setShowReviewModal(true)}}/>
                   </div>
                 </div>
                 <div style={{"width":"10px"}}>

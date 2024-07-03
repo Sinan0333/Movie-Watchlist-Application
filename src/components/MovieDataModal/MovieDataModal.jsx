@@ -14,6 +14,7 @@ function MovieDataModal({ showModal,setShowModal,data }) {
     const [releaseYear,setReleaseYear] = useState("")
     const [genre,setGenre] = useState("")
     const [image,setImage] = useState("")
+    const [loading,setLoading] = useState(false)
 
     useEffect(()=>{
       if(data){
@@ -33,10 +34,8 @@ function MovieDataModal({ showModal,setShowModal,data }) {
     const uploadImage = async () => {
       const preset_key = import.meta.env.VITE_PRESET_KEY;
       const cloud_name = import.meta.env.VITE_CLOUD_NAME;
-      console.log("env",import.meta.env)
-    console.log("preset_key",preset_key);
-      console.log("cloud_name",cloud_name);
-    const formData = new FormData();
+
+      const formData = new FormData();
       formData.append("file", image);
       formData.append("upload_preset", preset_key);
       formData.append("folder", "movies");
@@ -70,7 +69,7 @@ function MovieDataModal({ showModal,setShowModal,data }) {
       } else if (!image) {
         return notifyError("Image cannot be empty");
       }
-  
+      setLoading(true)
       try {
 
         let url;
@@ -84,13 +83,23 @@ function MovieDataModal({ showModal,setShowModal,data }) {
  
         if(data){
           dispatch(editMovie({id,title,description,releaseYear,genre,image:url,rating:data.rating,status:data.status,reviews:data.reviews,index:data.index}));
+          await axios.put(`http://localhost:3001/movies/${data.id}`, {id,title,description,releaseYear,genre,image:url,rating:data.rating,status:data.status,reviews:data.reviews});
         }else{
           const uniqueId = "id" + Date.now();
           dispatch(addMovie({ id:uniqueId, title, description, releaseYear, genre, image: url,status:false,rating:0,reviews:[] }));
+          await axios.post('http://localhost:3001/movies', {id,title,description,releaseYear,genre,image:url,rating:data.rating,status:data.status,reviews:data.reviews});
         }
+        setLoading(false)
         setShowModal(!showModal);
+        setTitle("");
+        setDescription("");
+        setReleaseYear("");
+        setGenre("");
+        setImage("");
       } catch (error) {
+        console.error(error);
         notifyError("Image upload failed");
+        setLoading(false)
       }
     };
 
@@ -121,7 +130,9 @@ function MovieDataModal({ showModal,setShowModal,data }) {
            <label htmlFor="genre">Genre</label>
            <input onChange={(e)=>setGenre(e.target.value)} value={genre} type="text" id="genre" name="genre" required />
         </div> 
-          <button type="submit" onClick={handleSubmit}>Submit</button>
+        {
+          loading ? <button type="submit" disabled>Loading...</button> : <button type="submit" onClick={handleSubmit}>Submit</button>
+        }
       </div>
     </div>
   )

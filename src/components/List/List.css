@@ -6,8 +6,11 @@
 }
 
 .card {
-    background-color: black;
-    color: white;
+    border-radius: 20px;
+    background: #e0e0e0;
+    box-shadow: inset 18px 18px 36px #bababa,
+            inset -18px -18px 36px #ffffff;
+    color: black;
     height: 550px;
     width: 250px;
     padding: 10px;
@@ -18,7 +21,9 @@
 }
 .card-img{
     max-height: 350PX;
+    max-width: 240px;
     margin-right: 10px;
+    margin-left: 5px;
 }
 
 .movie-title{
@@ -42,7 +47,8 @@
     width: 11%;
     position: absolute;
     display: flex;
-    justify-content: space-between;
+    margin-top: 5px;
+    margin-left: 10px;
 }
 
 .card-buttons-container{
@@ -54,7 +60,7 @@
     justify-content: center;
     align-items: center;
     margin-right: 4px;
-    background-color: wheat;
+    background-color: rgb(255, 255, 255);
     cursor: pointer;
     border-radius: 100%;
     width: 30px;

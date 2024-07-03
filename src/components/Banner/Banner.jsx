@@ -7,7 +7,7 @@ function Banner() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div style={{backgroundImage:`url("/assets/images/banner.jpeg")`}} className='banner'>
+    <div style={{backgroundImage:`url("/assets/images/banner.jpg")`}} className='banner'>
       <MovieDataModal showModal={showModal} setShowModal={setShowModal}/>
       <div className='content'>
         <h1 className='title'>Movie Watch list Application</h1>
@@ -18,7 +18,7 @@ function Banner() {
             <a href="https://github.com/Sinan0333/Movie-Watchlist-Application" target="_blank" rel="noreferrer"><button className='banner-buttoon2'>More Info</button></a>
         </div>
       </div> 
-      <div className="fade_bottom"></div>
+      {/* <div className="fade_bottom"></div> */}
     </div>
   )
 }

@@ -33,6 +33,7 @@ function MovieDataModal({ showModal,setShowModal,data }) {
     const uploadImage = async () => {
       const preset_key = import.meta.env.VITE_PRESET_KEY;
       const cloud_name = import.meta.env.VITE_CLOUD_NAME;
+      console.log("env",import.meta.env)
     console.log("preset_key",preset_key);
       console.log("cloud_name",cloud_name);
     const formData = new FormData();

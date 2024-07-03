@@ -1,7 +1,6 @@
 .banner{
     height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
+   
     color: #fff;
 }
 
@@ -17,7 +16,7 @@
 }
 
 .banner-buttoon1{
-    width: 126px;
+    width: 140px;
     height: 46px;
     color: #000;
     border: none;

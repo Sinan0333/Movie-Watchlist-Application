@@ -22,11 +22,6 @@ The Movie Watchlist application is a web-based tool that allows users to manage 
 
 ## Project Setup
 
-### Prerequisites
-
-- Node.js (>=14.0.0)
-- npm (>=6.0.0) or yarn (>=1.22.0)
-
 ### Installation
 
 1. Clone the repository:

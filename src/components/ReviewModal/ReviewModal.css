@@ -1,0 +1,21 @@
+.review-body{
+    word-break: break-all;
+}
+.review{
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid rgb(180, 172, 172);
+}
+
+
+.review-modal-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.review-modal-footer span{
+    font-size: 25px;
+    cursor: pointer;
+}

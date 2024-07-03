@@ -81,10 +81,10 @@ function MovieDataModal({ showModal,setShowModal,data }) {
         }
  
         if(data){
-          dispatch(editMovie({id,title,description,releaseYear,genre,image:url,index:data.index}));
+          dispatch(editMovie({id,title,description,releaseYear,genre,image:url,rating:data.rating,status:data.status,reviews:data.reviews,index:data.index}));
         }else{
           const uniqueId = "id" + Date.now();
-          dispatch(addMovie({ id:uniqueId, title, description, releaseYear, genre, image: url,status:false }));
+          dispatch(addMovie({ id:uniqueId, title, description, releaseYear, genre, image: url,status:false,rating:0,reviews:[] }));
         }
         setShowModal(!showModal);
       } catch (error) {

@@ -20,7 +20,6 @@ function ReviewModal({showModal,setShowModal,data}) {
         const id = "id" + Date.now();
         data.review.push({id,rating:rating,review:review})
         dispatch(addReview(data))
-        await axios.put(`http://localhost:3001/movies/${data.id}`, data);
         setReview("")
         setRating(0)
         setShowModal(false)

@@ -83,11 +83,9 @@ function MovieDataModal({ showModal,setShowModal,data }) {
  
         if(data){
           dispatch(editMovie({id,title,description,releaseYear,genre,image:url,rating:data.rating,status:data.status,reviews:data.reviews,index:data.index}));
-          await axios.put(`http://localhost:3001/movies/${data.id}`, {id,title,description,releaseYear,genre,image:url,rating:data.rating,status:data.status,reviews:data.reviews});
         }else{
           const uniqueId = "id" + Date.now();
           dispatch(addMovie({ id:uniqueId, title, description, releaseYear, genre, image: url,status:false,rating:0,reviews:[] }));
-          await axios.post('http://localhost:3001/movies', {id,title,description,releaseYear,genre,image:url,rating:data.rating,status:data.status,reviews:data.reviews});
         }
         setLoading(false)
         setShowModal(!showModal);

@@ -7,8 +7,7 @@ The Movie Watchlist application is a web-based tool that allows users to manage 
 ## Key Features
 
 1. **Add Movies**
-    - Users can add movies to their watchlist by providing details such as the movie title, description, release year, and genre.
-    - Each movie has a unique identifier.
+    - Users can add movies to their watchlist by providing details such as the movie image, title, description, release year, and genre.
 2. **Edit Movies**
     - Users can edit the details of movies already in their watchlist.
 3. **Delete Movies**
@@ -32,21 +31,18 @@ The Movie Watchlist application is a web-based tool that allows users to manage 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/movie-watchlist.git
-    cd movie-watchlist
+    git clone <link>
+    cd Movie-Watchlist-Application
     ```
 
 2. Install dependencies:
     ```bash
     npm install
-    # or
-    yarn install
     ```
 
 ### Running the Application
 
 To start the application locally, run:
 ```bash
-npm start
-# or
-yarn start
+npm run dev
+
